@@ -10,6 +10,7 @@ app.use(express.json());
 
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/blogs', require('./routes/blogRoutes'));
+app.use('/api/portfolio', require('./routes/portfolioRoutes'));
 
 app.get('/', (req, res) => res.send('API is running...'));
 
