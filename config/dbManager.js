@@ -1,6 +1,5 @@
-// config/dbManager.js
 const mongoose = require('mongoose');
-const blogSchema = require('../models/Blog');
+const models = require('../models/dynamic'); 
 
 const connections = {};
 
@@ -10,8 +9,6 @@ const getPanelDb = (panel) => {
   const dbName = {
     event: 'Poornam-event',
     travel: 'Travel',
-    photography: 'Photography',
-    catering: 'Catering',
   }[panel];
 
   if (!dbName) throw new Error('Invalid panel');
@@ -19,10 +16,14 @@ const getPanelDb = (panel) => {
   if (connections[dbName]) return connections[dbName];
 
   const db = mongoose.connection.useDb(dbName, { useCache: true });
-  const Blog = db.model('Blog', blogSchema); // 🆕 register Blog model
 
-  connections[dbName] = { Blog };
-  return connections[dbName];
+  const registeredModels = {};
+  for (const [key, schema] of Object.entries(models)) {
+    registeredModels[key] = db.model(key, schema);
+  }
+
+  connections[dbName] = registeredModels;
+  return registeredModels;
 };
 
 module.exports = getPanelDb;

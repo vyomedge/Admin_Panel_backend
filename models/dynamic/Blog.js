@@ -1,18 +1,3 @@
-// const mongoose = require('mongoose');
-
-// const blogSchema = new mongoose.Schema(
-//   {
-//     title: { type: String, required: true },
-//     content: { type: String, required: true },
-//     author: { type: String },
-//     image: { type: String }, // optional
-//     tags: [String],
-//   },
-//   { timestamps: true }
-// );
-
-// module.exports = blogSchema;
-
 
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
@@ -25,7 +10,7 @@ const blogSchema = new Schema({
   },
   authorName: {
     type: String,
-    required: true,
+    required: false,
     trim: true
   },
   category: {
@@ -116,4 +101,5 @@ const blogSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('Blog', blogSchema);
+
+module.exports = blogSchema;
