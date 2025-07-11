@@ -1,8 +1,8 @@
 services:
   - type: web
-    name: admin-panel
+    name: admin-panel-backend
     env: node
-    rootDir: ADMIN_PANEL
+    plan: free
+    rootDir: .
     buildCommand: npm install
     startCommand: npm start
-    autoDeploy: true
