@@ -2,7 +2,14 @@ services:
   - type: web
     name: admin-panel-backend
     env: node
-    plan: free
-    rootDir: .
+    repo: https://github.com/your-username/Admin_Panel_backend
+    branch: main
+    rootDir: .  # if package.json is in root
     buildCommand: npm install
     startCommand: npm start
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false
