@@ -1,6 +1,0 @@
-services:
-  - type: web
-    name: admin-panel-backend
-    env: node
-    buildCommand: npm install
-    startCommand: npm start
