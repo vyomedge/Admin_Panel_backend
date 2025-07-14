@@ -2,6 +2,6 @@ services:
   - type: web
     name: admin-panel-backend
     env: node
-    branch: main
+    rootDir: ADMIN_PANEL
     buildCommand: npm install
     startCommand: npm start
